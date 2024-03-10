@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "kharon"
+version = "0.1.0"
+description = "Copy data from mqtt to postgres"
+authors = ["Wesley Ellis <tahnok@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg = {extras = ["binary"], version = "^3.1.18"}
+aiomqtt = "^2.0.0"
+pydantic = "^2.6.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
