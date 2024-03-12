@@ -6,6 +6,7 @@ COPY . /app
 
 WORKDIR /app
 
+ENV PYTHONUNBUFFERED=1
 RUN poetry install
 CMD ["poetry", "run", "python", "kharon.py"]
 

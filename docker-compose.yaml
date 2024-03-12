@@ -6,3 +6,4 @@ services:
     restart: unless-stopped
     volumes:
       - "./config.json:/data/config.json:ro"
+    network_mode: host
