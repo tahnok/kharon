@@ -3,6 +3,7 @@ Kharon: ferry data from MQTT to postgres
 
 Currently only supports loading simple floating point numbers from MQTT into postgres
 """
+import argparse
 from datetime import datetime, timezone
 import json
 from typing import cast
@@ -69,6 +70,12 @@ async def main(config: Config):
         tg.create_task(db_task(config.postgres_url))
 
 if __name__ == "__main__":
-    with open("config.json", "r") as f:
+    parser = argparse.ArgumentParser(
+                    prog="kharon",
+                    description="Copy data from mqtt to postgres",
+                    )
+    parser.add_argument("-c", "--config", default="/data/config.json", help="Config file location, see config.json.example")
+    args = parser.parse_args()
+    with open(args.config, "r") as f:
         config = Config(**json.load(f))
     asyncio.run(main(config))
